@@ -96,7 +96,6 @@ public class BusinessImplTestWithPowerMock {
         //then
         assertEquals(returnValue, result);
         PowerMockito.verifyPrivate(businessImplSpy, times(1)).invoke("privateInsideTestedClass", number);
-        verify(dataServiceMock, never()).doSomethingElse(anyInt());
     }
 
 }
