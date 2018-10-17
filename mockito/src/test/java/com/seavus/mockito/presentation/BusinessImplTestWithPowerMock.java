@@ -63,6 +63,7 @@ public class BusinessImplTestWithPowerMock {
         //then
         assertEquals(returnValue, result);
         verify(dataServiceMock, never()).doSomethingElse(anyInt());
+        verify(transformerMock).transformFinal(number);
     }
 
     /* Mock private method in dependency class */

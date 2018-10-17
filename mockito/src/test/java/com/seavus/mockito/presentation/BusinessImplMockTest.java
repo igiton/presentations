@@ -32,7 +32,7 @@ public class BusinessImplMockTest {
     @Test
     public void testFindTheGreatestFromAllData() {
         DataService dataServiceMock = mock(DataService.class); //creation of mock object
-        when(dataServiceMock.retrieveDataFromSomewhere()).thenReturn(new int[] { 100, 200, 500 });
+        when(dataServiceMock.retrieveDataFromSomewhere()).thenReturn(new int[] { 100, 200, 500 }); //if we do not create this stub, null will be returned
         BusinessImpl businessImpl = new BusinessImpl(dataServiceMock);//instance of tested class that work with mocks
         int result = businessImpl.findTheGreatestFromAllData();
         assertEquals(500, result);
