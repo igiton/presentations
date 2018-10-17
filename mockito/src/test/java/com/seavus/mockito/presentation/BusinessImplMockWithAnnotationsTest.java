@@ -11,12 +11,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -30,11 +28,6 @@ public class BusinessImplMockWithAnnotationsTest {
 
     @InjectMocks
     BusinessImpl businessImpl;
-
-    @Before
-    public void preTestSetup() {
-        MockitoAnnotations.initMocks(this);
-    }
 
     @Test
     public void testFindTheGreatestFromAllData() {
@@ -69,6 +62,9 @@ public class BusinessImplMockWithAnnotationsTest {
         assertEquals(Integer.MIN_VALUE, result);
     }
 
+    /* for successful testing it is not enough to assert that result is equals to expected
+        we need to verify that methods of mock objects are called
+        and in some cases to verify arguments that are passed to these methods */
     @Test
     public void testFindTheGreatestFromAllData_withMethodCallVerification() {
         //given
@@ -83,6 +79,7 @@ public class BusinessImplMockWithAnnotationsTest {
         verify(dataServiceMock, times(1)).retrieveDataFromSomewhere(); //or
         verify(dataServiceMock, atLeastOnce()).retrieveDataFromSomewhere();
         verify(dataServiceMock, atLeastOnce()).doSomethingElse(anyInt());
+
     }
 
     @Test
