@@ -39,6 +39,6 @@ public class BusinessImplTestWithPowerMock_MockConstructor {
         //then
         assertEquals(returnValue, result);
         PowerMockito.verifyNew(Transformer.class).withNoArguments();
-        verify(dataServiceMock, never()).doSomethingElse(anyInt());
+        verify(transformerMock).transform(anyInt());
     }
 }
