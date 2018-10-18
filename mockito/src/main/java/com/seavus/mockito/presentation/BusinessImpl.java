@@ -17,7 +17,6 @@ public class BusinessImpl {
     }
 
     public int findTheGreatestFromAllData() {
-        //int[] data = getResultFromAnotherSource();
         int[] data = dataService.retrieveDataFromSomewhere();
         int min = Integer.MIN_VALUE;
 
@@ -30,6 +29,28 @@ public class BusinessImpl {
             dataService.doSomethingElse(min);
         }
         return min;
+    }
+
+    public int retrieveAndTransform_combinedExample() {
+        int[] data = dataService.retrieveDataFromSomewhere();
+        int min = Integer.MIN_VALUE;
+
+        for (int value : data) {
+            if (value > min) {
+                min = value;
+            }
+        }
+        if(min > 400) {
+            dataService.doSomethingElse(min);
+        }
+        //call static method
+        int transformed = Transformer.transformStatic(min);
+        //call final method
+        int transformedAgain = transformer.transformFinal(transformed);
+        //call method which creates new instance
+        int finallyTransformed = transformWithMockConstructor(transformedAgain);
+
+        return finallyTransformed;
     }
 
     private int[] getResultFromAnotherSource() {

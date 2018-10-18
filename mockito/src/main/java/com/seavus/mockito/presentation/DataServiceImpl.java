@@ -4,7 +4,7 @@ public class DataServiceImpl implements DataService {
 
     @Override
     public int[] retrieveDataFromSomewhere() {
-        System.out.println("Really retrieveDataFromSomewhere ");
+        System.out.println("Calling WS, DB, external source to obtain data ...");
         return new int[]{1000, 5000, 2000};
     }
 

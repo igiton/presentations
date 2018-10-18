@@ -66,7 +66,7 @@ public class BusinessImplTestWithPowerMock {
         verify(transformerMock).transformFinal(number);
     }
 
-    /* Mock private method in dependency class */
+    /* Mock private method in dependency class (when "spy" is used for mocking)*/
     @Test
     public void test_With_Private_MethodCall_InExternalDependency() throws Exception {
         //given
@@ -75,7 +75,7 @@ public class BusinessImplTestWithPowerMock {
         Transformer transformer = new Transformer();
         Transformer transformerSpy = spy(transformer);
         businessImpl.setTransformer(transformerSpy);
-        PowerMockito.doReturn(returnValue).when(transformerSpy, "privateMethodInTransformer", number);
+        PowerMockito.doReturn(returnValue).when(transformerSpy, "privateMethodInTransformer", number);//because we are using spy for transformer and do not have stub for transformer#callPrivateMethod
         //when
         int result = businessImpl.transformWithPrivateMethodCall(number);
         //then
