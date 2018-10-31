@@ -48,8 +48,8 @@ public class BusinessImpl {
         //call final method
         int transformedAgain = transformer.transformFinal(transformed);
         //call method which creates new instance
-        int finallyTransformed = transformWithMockConstructor(transformedAgain);
-
+        Transformer transformer = transformerFactory.getInstance();
+        int finallyTransformed = transformer.transform(transformedAgain);
         return finallyTransformed;
     }
 
